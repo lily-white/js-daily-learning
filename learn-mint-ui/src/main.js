@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Header from '@/components/header'
+import 'reset.css'
 
 Vue.config.productionTip = false
 
