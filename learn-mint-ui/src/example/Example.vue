@@ -3,6 +3,7 @@
 		<h1>{{title}}</h1>
 		<ul>
 			<router-link to="/header" tag="li">Header</router-link>
+			<router-link to="/button" tag="li">Button</router-link>
 		</ul>
 	</div>
 	

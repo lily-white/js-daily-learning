@@ -23,4 +23,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    vertical-align: middle;
+}
 </style>

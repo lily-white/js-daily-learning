@@ -4,12 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Header from '@/components/header'
+import Button from '@/components/button'
 import 'reset.css'
 
 Vue.config.productionTip = false
 
 //注册组件
 Vue.component(Header.name, Header);
+Vue.component(Button.name, Button);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
