@@ -23,7 +23,8 @@
 	}
 </script>
 <style>
-	.m-button {
+@component-namespace m {
+	@component button {
 		appearance: none;
 		border-radius: 4px;
 		border: 0;
@@ -34,10 +35,11 @@
 	    overflow: hidden;
 	    position: relative;
 	    text-align: center;
+	    @descendent default {
+			color: #656b79;
+		    background-color: #f6f8fa;
+		    box-shadow: 0 0 1px #b8bbbf;
+		}
 	}
-	.m-button-default {
-		color: #656b79;
-	    background-color: #f6f8fa;
-	    box-shadow: 0 0 1px #b8bbbf;
-	}
+}
 </style>

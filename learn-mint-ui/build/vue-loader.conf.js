@@ -20,9 +20,10 @@ module.exports = {
     image: 'xlink:href'
   },
   postcss: [
-    require('autoprefixer')({
-         browsers: ['last 10 Chrome versions', 'last 5 Firefox versions', 'Safari >= 6', 'ie > 8']
+    require('postcss-cssnext')({
+         browsers: ['last 10 Chrome versions', 'last 5 Firefox versions', 'Safari >= 6', 'ie > 8','Android >= 4.0']
     }),
-    require('postcss-css-reset')
+    require('postcss-salad')()
+    
   ]
 }

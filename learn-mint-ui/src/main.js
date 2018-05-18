@@ -5,7 +5,6 @@ import App from './App'
 import router from './router'
 import Header from '@/components/header'
 import Button from '@/components/button'
-import 'reset.css'
 
 Vue.config.productionTip = false
 

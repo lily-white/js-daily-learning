@@ -20,7 +20,8 @@
 	};
 </script>
 <style>
-	.m-header {
+@component-namespace m {
+	@component header {
 		display: flex;
 		align-items: center;
 		background-color: #26a2ff;
@@ -33,29 +34,30 @@
 	    text-align: center;
     	white-space: nowrap;
     	position: relative;
+    	@when fixed {
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+		}
+		@descendent button {
+			flex: .5;
+			@when left {
+				text-align: left;
+			}
+			@when right {
+				text-align: right;
+			}
+	    }
+	    @descendent title {
+			line-height: 2;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-size: inherit;
+			font-weight: normal;
+			flex: 1;
+		}
 	}
-	.m-header.is-fixed {
-		position: fixed;
-		left: 0;
-		right: 0;
-		top: 0;
-	}
-	.m-header-button {
-		flex: .5;
-    }
-	.m-header-button.is-left {
-		text-align: left;
-	}
-	.m-header-button.is-right {
-		text-align: right;
-	}
-	.m-header-title {
-		line-height: 2;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		font-size: inherit;
-		font-weight: normal;
-		flex: 1;
-	}
+}
 </style>
