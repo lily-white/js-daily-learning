@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import './assets/font/iconfont.css';
 import Header from '@/components/header'
 import Button from '@/components/button'
 

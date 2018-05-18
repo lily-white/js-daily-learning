@@ -1,5 +1,6 @@
 <template>
 	<div class="page-button">
+	<!--
 		<div class="page-button-group">
 			<button class="m-button m-button--default m-button--large">default</button>
 			<button class="m-button m-button--primary m-button--large">primary</button>
@@ -33,11 +34,49 @@
 				<span class="m-button-text">带自定义图标</span>
 			</button>
 		</div>
+		-->
+		<div class="page-button-group">
+			<mt-button size="large">default</mt-button>
+			<mt-button type="primary" size="large">primary</mt-button>
+			<mt-button type="danger" size="large">danger</mt-button>
+		</div>
+		<div class="page-button-group">
+			<mt-button>default</mt-button>
+			<mt-button type="primary">primary</mt-button>
+			<mt-button type="danger">danger</mt-button>
+		</div>
+		<div class="page-button-group">
+			<mt-button size="small">default</mt-button>
+			<mt-button type="primary" size="small">primary</mt-button>
+			<mt-button type="danger" size="small">danger</mt-button>
+		</div>
+		<div class="page-button-group">
+			<mt-button size="large" disabled>default</mt-button>
+			<mt-button type="primary" size="large" disabled>primary</mt-button>
+			<mt-button type="danger" size="large" disabled>danger</mt-button>
+		</div>
+		<div class="page-button-group">
+			<mt-button size="large" plain>default</mt-button>
+			<mt-button type="primary" size="large" plain>primary</mt-button>
+			<mt-button type="danger" size="large" plain>danger</mt-button>
+		</div>
+		<div class="page-button-group">
+			<mt-button>
+				<img src="../assets/100x100.png" height="20" width="20" slot="icon">
+				带自定义图标
+			</mt-button>
+			<mt-button icon="back" size="large">
+				返回
+			</mt-button>
+		</div>
 	</div>
 </template>
 <script>
 	export default{
-		name: 'Button'
+		name: 'Button',
+		methods: {
+
+		}
 	}
 </script>
 <style>
@@ -47,72 +86,5 @@
 	.page-button-group > * {
 		margin-bottom: 15px;
 	}
-	@component m-button {
-		appearance: none;
-		border-radius: 4px;
-		border: 0;
-		box-sizing: border-box;
-		font-size: 18px;
-		height: 41px;
-		outline: 0;
-	    overflow: hidden;
-	    position: relative;
-	    text-align: center;
-
-		@when disabled {
-		    opacity: .6;
-		}
-
-	    @modifier default {
-			color: #656b79;
-		    background-color: #f6f8fa;
-		    box-shadow: 0 0 1px #b8bbbf;
-
-		    @when plain {
-				border: 1px solid #5a5a5a;
-				color: #5a5a5a;
-				background-color: transparent;
-				box-shadow: none;
-			}
-		}
-
-		@modifier primary {
-			color: #fff;
-		    background-color: #26a2ff;
-
-		    @when plain {
-				border: 1px solid #26a2ff;
-				color: #26a2ff;
-				background-color: transparent;
-			}
-		}
-
-		@modifier danger {
-			color: #fff;
-		    background-color: #ef4f4f;
-
-		    @when plain {
-				border: 1px solid #ef4f4f;
-				color: #ef4f4f;
-				background-color: transparent;
-			}
-		}
-
-		@modifier large {
-			display: block;
-			width: 100%;
-		}
-
-		@modifier normal {
-			display: inline-block;
-			padding: 0 12px;
-		}
-
-		@modifier small {
-			display: inline-block;
-			font-size: 14px;
-		    padding: 0 12px;
-		    height: 33px;
-		}
-	}
+	
 </style>
