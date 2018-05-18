@@ -11,22 +11,16 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
-button, input, optgroup, select, textarea {
-    color: inherit;
-    font: inherit;
+@reset-global mobile;
+
+ html, body {
+    background-color: #fafafa;
+    -webkit-overflow-scrolling: touch;
+    user-select: none;
+  }
+  body {
     margin: 0;
-    vertical-align: middle;
-}
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
+  }
 </style>

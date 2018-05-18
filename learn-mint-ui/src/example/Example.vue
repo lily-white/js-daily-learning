@@ -4,6 +4,7 @@
 		<ul>
 			<router-link to="/header" tag="li">Header</router-link>
 			<router-link to="/button" tag="li">Button</router-link>
+			<router-link to="/cell" tag="li">Cell</router-link>
 		</ul>
 	</div>
 	
@@ -20,16 +21,5 @@ export default {
 </script>
 
 <style>
- @reset-global mobile;
  
- html, body {
-    background-color: #fafafa;
-    -webkit-overflow-scrolling: touch;
-    user-select: none;
-  }
-  body {
-  	margin: 0;
-    font-size: 14px;
-    font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
-  }
 </style>

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Example from '@/example/Example.vue'
 import Header from '@/example/pages/header.vue'
 import Button from '@/example/pages/button.vue'
+import Cell from '@/example/pages/cell.vue'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/button',
       name: 'Button',
       component: Button
+    },
+    {
+      path: '/cell',
+      name: 'Cell',
+      component: Cell
     }
   ]
 })
