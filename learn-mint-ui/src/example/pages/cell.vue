@@ -1,5 +1,6 @@
 <template>
 	<div class="page-cell">
+		<div class="page-title">Cell</div>
 		<a class="m-cell">
 			<div class="m-cell-wrapper">
 				<div class="m-cell-title">

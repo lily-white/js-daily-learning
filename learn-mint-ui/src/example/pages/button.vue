@@ -1,5 +1,6 @@
 <template>
 	<div class="page-button">
+	<div class="page-title">Button</div>
 	<!--
 		<div class="page-button-group">
 			<button class="m-button m-button--default m-button--large">default</button>
@@ -81,7 +82,7 @@
 </script>
 <style>
 	.page-button {
-		padding: 10px;
+		padding: 0 10px;
 	}
 	.page-button-group > * {
 		margin-bottom: 15px;
