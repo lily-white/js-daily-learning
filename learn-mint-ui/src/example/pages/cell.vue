@@ -117,6 +117,8 @@
 		</mt-cell>
 		<mt-cell title="标题文字" is-link label="描述文字https://mint-ui.github.io" to="https://mint-ui.github.io"></mt-cell>
 		<mt-cell title="标题文字" is-link label="跳转到 /#/toast" :to="{name: 'Header'}"></mt-cell>
+		
+
 	</div>
 </template>
 <script>

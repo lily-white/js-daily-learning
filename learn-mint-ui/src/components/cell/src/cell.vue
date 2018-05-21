@@ -24,7 +24,7 @@
 <script>
 /** 
  * @module components/cell
- * @desc 列表
+ * @desc 单元格
  * @param {string} [icon] - 显示图标 拼接成mintui-icon
  * @param {string} [title] - 标题
  * @param {string} [label] - 备注信息
@@ -80,6 +80,19 @@
 		overflow: hidden;
 		position: relative;
 		text-decoration: none;
+
+		&:first-of-type {
+			.m-cell-wrapper {
+				background-origin: border-box;
+			}
+		}
+
+		&:last-of-type {
+			background-image: linear-gradient(0, #d9d9d9, #d9d9d9 50%, transparent 100%);
+			background-repeat: no-repeat;
+		    background-size: 100% 1px;
+		    background-position: bottom left;
+		}
 
 		@descendent wrapper {
 			background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 100%);
@@ -151,5 +164,8 @@
 	        }
 	    }
 	}
+}
+.m-cell:first-child .m-cell-wrapper {
+	background-origin: border-box;
 }
 </style>
