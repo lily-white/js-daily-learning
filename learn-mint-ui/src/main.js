@@ -6,12 +6,14 @@ import router from './router'
 import './assets/font/iconfont.css';
 import Header from '@/components/header'
 import Button from '@/components/button'
+import Cell from '@/components/cell'
 
 Vue.config.productionTip = false
 
 //注册组件
 Vue.component(Header.name, Header);
 Vue.component(Button.name, Button);
+Vue.component(Cell.name, Cell);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
