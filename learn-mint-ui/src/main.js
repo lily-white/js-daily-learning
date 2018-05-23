@@ -15,6 +15,8 @@ Vue.component(Header.name, Header);
 Vue.component(Button.name, Button);
 Vue.component(Cell.name, Cell);
 /* eslint-disable no-new */
+
+
 new Vue({
   el: '#app',
   router,

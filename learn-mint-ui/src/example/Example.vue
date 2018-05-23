@@ -1,25 +1,31 @@
 <template>
 	<div>
-		<h1>{{title}}</h1>
+		<div v-for="nav in navs" key="nav.title">
+		<h1>{{nav.title}}</h1>
 		<ul>
-			<router-link to="/header" tag="li">Header</router-link>
-			<router-link to="/button" tag="li">Button</router-link>
-			<router-link to="/cell" tag="li">Cell</router-link>
+			<router-link :to="page.path" tag="li" v-for="page in nav.list" key="page.name">{{page.name}}</router-link>
 		</ul>
+		</div>
 	</div>
 	
 </template>
 <script>
+import {navs} from '@/router/index.js'
+
 export default {
   name: 'Example',
   data () {
     return {
-      title: 'ui example'
+      title: 'ui example',
+      navs: []
     }
+  },
+  created () {
+  	this.navs = navs;
   }
 }
 </script>
 
 <style>
- 
+
 </style>
