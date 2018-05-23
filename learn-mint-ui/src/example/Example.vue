@@ -1,10 +1,10 @@
 <template>
 	<div>
-		<div v-for="nav in navs" key="nav.title">
+		<div v-for="nav in navs">
 		<h1>{{nav.title}}</h1>
-		<ul>
-			<router-link :to="page.path" tag="li" v-for="page in nav.list" key="page.name">{{page.name}}</router-link>
-		</ul>
+		<div>
+			<mt-cell :to="page.path" v-for="page in nav.list" is-link :title="page.name"></mt-cell>
+		</div>
 		</div>
 	</div>
 	

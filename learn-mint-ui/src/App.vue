@@ -51,6 +51,9 @@ export default {
       height: 40px;
       text-align: center;
     }
+    @descendent part {
+      margin-bottom: 15px;
+    }
   }
   .page-back i {
     font-size: 24px;

@@ -7,6 +7,10 @@ import './assets/font/iconfont.css';
 import Header from '@/components/header'
 import Button from '@/components/button'
 import Cell from '@/components/cell'
+import Navbar from '@/components/navbar'
+import TabItem from '@/components/tab-item'
+import TabContainer from '@/components/tab-container'
+import TabContainerItem from '@/components/tab-container-item'
 
 Vue.config.productionTip = false
 
@@ -14,6 +18,10 @@ Vue.config.productionTip = false
 Vue.component(Header.name, Header);
 Vue.component(Button.name, Button);
 Vue.component(Cell.name, Cell);
+Vue.component(Navbar.name, Navbar);
+Vue.component(TabItem.name, TabItem);
+Vue.component(TabContainer.name, TabContainer);
+Vue.component(TabContainerItem.name, TabContainerItem);
 /* eslint-disable no-new */
 
 
