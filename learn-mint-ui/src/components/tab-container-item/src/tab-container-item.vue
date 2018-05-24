@@ -1,5 +1,5 @@
 <template>
-	<div class="m-tab-container-item">
+	<div class="m-tab-container-item" v-show="$parent.value === id">
 		<slot></slot>
 	</div>
 </template>
@@ -13,9 +13,6 @@
 </script>
 <style>
 	.m-tab-container-item {
-		flex-shrink: 0;
-		width: 100%
-
 		
 	}
 </style>

@@ -9,10 +9,7 @@
 			</mt-navbar>
 			<div class="page-part">
 				<mt-cell title="当前选中" :value="selected"></mt-cell>
-			</div>		
-			<div class="nav-content">
-				<mt-cell :title="'内容'+n" v-for="n in 10"></mt-cell>
-			</div>
+			</div>	
 			<mt-tab-container v-model="selected">
 				<mt-tab-container-item id="1">
 					<mt-cell :title="'内容'+n" v-for="n in 10"></mt-cell>
