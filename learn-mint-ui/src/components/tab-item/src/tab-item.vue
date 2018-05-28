@@ -30,17 +30,26 @@
 	@component tab {
 		@descendent item {
 			flex: 1;
-			font-size: 15px;
-			padding: 17px 0;
+			font-size: 12px;
+			padding: 7px 0;
 			text-align: center;
 			text-decoration: none;
 			display: block;
 
-			@when selected {
-				border-bottom: 3px solid #26a2ff;
-			    color: #26a2ff;
-			    margin-bottom: -3px;
-			}
+			@descendent icon {
+	    		width: 24px;
+	    		height: 24px;
+	    		margin: 0 auto 5px;
+
+	    		&:empty {
+	    			display: none;
+	    		}
+	    		
+	    		img {
+		    		size: 100%;
+		    		display: block;
+		    	}
+	    	}
 
 			@descendent label {
 				font-size: 12px;

@@ -29,6 +29,17 @@
 		@when fixed{
 			position: fixed 0 0 * 0;
 		}
+
+		.m-tab-item {	
+			font-size: 15px;		
+			padding: 17px 0;
+			
+			@when selected {
+				border-bottom: 3px solid #26a2ff;
+			    color: #26a2ff;
+			    margin-bottom: -3px;
+			}
+		}
 	}
 }
 </style>

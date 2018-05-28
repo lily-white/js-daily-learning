@@ -21,6 +21,10 @@
       {
         "path": "/search",
         "name": "Search"
+      },
+      {
+        "path": "/tabbar",
+        "name": "Tabbar"
       }
     ]
   }

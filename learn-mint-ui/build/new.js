@@ -50,6 +50,8 @@ const example = `<template>
 	}
 </script>
 <style>
+
+</style>
 	`;
 
 fileSave(path.join(ExamplePath, `${componentname}.vue`))
