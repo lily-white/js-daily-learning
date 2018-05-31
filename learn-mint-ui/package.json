@@ -46,6 +46,7 @@
     "postcss-nested": "^3.0.0",
     "postcss-salad": "^2.0.1",
     "postcss-url": "^7.2.1",
+    "precss": "^3.1.2",
     "rimraf": "^2.6.0",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",

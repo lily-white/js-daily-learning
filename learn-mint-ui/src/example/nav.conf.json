@@ -25,6 +25,10 @@
       {
         "path": "/tabbar",
         "name": "Tabbar"
+      },
+      {
+        "path": "/spinner",
+        "name": "Spinner"
       }
     ]
   }

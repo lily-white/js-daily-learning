@@ -13,6 +13,7 @@ import TabContainer from '@/components/tab-container'
 import TabContainerItem from '@/components/tab-container-item'
 import Search from '@/components/search'
 import Tabbar from '@/components/tabbar'
+import Spinner from '@/components/spinner'
 
 Vue.config.productionTip = false
 
@@ -26,6 +27,7 @@ Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
 Vue.component(Search.name, Search);
 Vue.component(Tabbar.name, Tabbar);
+Vue.component(Spinner.name, Spinner);
 /* eslint-disable no-new */
 
 
