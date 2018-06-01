@@ -1,9 +1,14 @@
 <template>
 	<div class="m-tab-container">
-		<slot></slot>		
+		<div 
+			class="m-tab-container-wrap" 
+			ref="wrap">
+			<slot></slot>
+		</div>
 	</div>
 </template>
 <script>
+import {once} from '@/utils/dom.js'
 /**
  * mt-tab-container
  * @desc 面板，搭配 tab-container-item 使用
@@ -22,9 +27,29 @@
 		name: 'mt-tab-container',
 		props: {
 			value: {}
+		},
+		mounted() {
+		},
+		methods: {
+			startDrag(evt) {
+
+			},
+			onDrag(evt) {
+				
+			},
+			endDrag(evt) {
+
+			},
 		}
 	}
 </script>
 <style>
-	
+	@component-namespace m {
+		@component tab-container {
+
+			@descendent wrap {
+				display: flex;
+			}
+		} 
+	}
 </style>

@@ -27,6 +27,7 @@
 </script>
 <style>
 	.m-tab-container-item {
-		
+		flex-shrink: 0;
+		width: 100%;
 	}
 </style>

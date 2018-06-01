@@ -29,6 +29,10 @@
       {
         "path": "/spinner",
         "name": "Spinner"
+      },
+       {
+        "path": "/tab-container",
+        "name": "TabContainer"
       }
     ]
   }
