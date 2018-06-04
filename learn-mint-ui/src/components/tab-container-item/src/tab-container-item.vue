@@ -1,5 +1,5 @@
 <template>
-	<div class="m-tab-container-item" v-show="$parent.value === id">
+	<div class="m-tab-container-item" v-show="$parent.swiping || $parent.value === id">
 		<slot></slot>
 	</div>
 </template>
