@@ -48,7 +48,7 @@ import arrayFindIndex from 'array-find-index'
 			if(!this.swipeable) return;
 			this.wrap = this.$refs.wrap;
 			this.pageWidth = this.wrap.clientWidth;
-			this.limitWdith = this.pageWidth / 6;
+			this.limitWdith = this.pageWidth / 4;
 		},
 		watch: {
 			value(val) {
@@ -107,7 +107,6 @@ import arrayFindIndex from 'array-find-index'
 			endDrag(evt) {
 				if(!this.swiping) return;
 				this.dragging = false;
-				this.swiping = false;
 
 				//根据移动方向，确定切换tab的index值
 				const direction = this.offsetLeft > 0 ? -1: 1;
@@ -131,20 +130,20 @@ import arrayFindIndex from 'array-find-index'
 				this.swiping = true;
 			},
 			swipeLeaveTransition(lastIndex = 0) {
-
 				if(typeof this.index != 'number') {
-					console.log(lastIndex);
+					this.index = arrayFindIndex(this.$children, item => item.id === this.currentActive);
+					this.swipeMove(-lastIndex * this.pageWidth);
 				}
 
 				setTimeout(() => {
 				  //添加动画效果
-				  this.$refs.wrap.classList.add('swipe-transition');
+				  this.wrap.classList.add('swipe-transition');
 				  this.swipeMove(-this.index * this.pageWidth);
 
 				  //动画结束后重置属性
-				  once(this.$refs.wrap, 'webkitTansitionEnd', () => {
-				  	this.$refs.wrap.classList.remove('swipe-transition');
-				  	this.$refs.wrap.style.webkitTransform = '';
+				  once(this.wrap, 'webkitTransitionEnd', () => {
+				  	this.wrap.classList.remove('swipe-transition');
+				  	this.wrap.style.webkitTransform = '';
 
 				  	this.index = null;
 				  	this.swiping = false;
