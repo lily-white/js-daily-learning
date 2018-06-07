@@ -1,6 +1,9 @@
 <template>
 	<a class="m-cell" :href="href">
 		<span class="m-cell-mask" v-if="isLink"></span>
+		<div class="m-cell-left">
+			<slot name="left"></slot>
+		</div>
 		<div class="m-cell-wrapper">
 			<div class="m-cell-title">
 				<slot name="icon">
@@ -18,6 +21,9 @@
 				</slot>
 			</div>
 			<i class="m-cell-arrow-right" v-if="isLink"></i>
+		</div>
+		<div class="m-cell-right">
+			<slot name="right"></slot>
 		</div>
 	</a>
 </template>
@@ -162,6 +168,22 @@
 	        &:active::after {
 	          opacity: .1;
 	        }
+	    }
+
+	    @descendent left {
+	    	position: absolute;
+	    	top: 0;
+	    	left: 0;
+	    	height: 100%;
+	    	transform: translate3d(-100%, 0, 0);
+	    }
+
+	    @descendent right {
+	    	position: absolute;
+	    	top: 0;
+	    	right: 0;
+	    	height: 100%;
+	    	transform: translate3d(100%, 0, 0);
 	    }
 	}
 }

@@ -14,6 +14,7 @@ import TabContainerItem from '@/components/tab-container-item'
 import Search from '@/components/search'
 import Tabbar from '@/components/tabbar'
 import Spinner from '@/components/spinner'
+import CellSwipe from '@/components/cell-swipe'
 
 Vue.config.productionTip = false
 
@@ -28,6 +29,7 @@ Vue.component(TabContainerItem.name, TabContainerItem);
 Vue.component(Search.name, Search);
 Vue.component(Tabbar.name, Tabbar);
 Vue.component(Spinner.name, Spinner);
+Vue.component(CellSwipe.name, CellSwipe);
 /* eslint-disable no-new */
 
 

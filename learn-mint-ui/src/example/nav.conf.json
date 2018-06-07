@@ -30,9 +30,13 @@
         "path": "/spinner",
         "name": "Spinner"
       },
-       {
+      {
         "path": "/tab-container",
         "name": "TabContainer"
+      },
+      {
+        "path": "/cell-swipe",
+        "name": "CellSwipe"
       }
     ]
   }
