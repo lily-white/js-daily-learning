@@ -19,6 +19,8 @@
 </template>
 <script>
 import XCell from '@/components/cell'
+import {once} from '@/utils/dom.js'
+
 export default {
   name: 'mt-cell-swipe',
   components: {XCell},
@@ -41,7 +43,7 @@ export default {
   	this.rightWrap = this.right.parentNode;
   	this.leftWrap = this.left.parentNode;
 
-  	this.translate3d(this.leftWrap, this.leftWidth-1);
+  	this.translate3d(this.leftWrap, -this.leftWidth-1);
   	this.translate3d(this.rightWrap, this.rightWidth);
 
   },
@@ -54,25 +56,69 @@ export default {
   		this.dragging = true;
   	},
   	onDrag(evt) {
+  		//todo open
   		if(!this.dragging) return;
   		const e = evt.changedTouches ? evt.changedTouches[0] : evt;
+  		const offsetLeft = this.offsetLeft = e.pageX - this.start.x;
+  		const offsetTop =  e.pageY - this.start.y;
+
+  		const x = Math.abs(offsetLeft);
+  		const y = Math.abs(offsetTop);
+
+		if(x < 5 || (x >= 5 && y >= x * 1.73 )) return;
+
   		evt.preventDefault();
-
-  		const x =  e.pageX - this.start.x;
-  		const y =  e.pageY - this.start.y;
-
-  		if(x > 0 || Math.abs(x) < Math.abs(y)) return;
-
-  		this.move(x);
-  	},
-  	endDrag() {
-
-  	},
-  	move(x) {
-  		this.translate3d(this.rightWrap, this.rightWidth + x);
-  		this.translate3d(this.wrap, x);
-  		this.translate3d(this.leftWrap, -this.leftWidth + x);
+  		evt.stopPropagation();
   		this.swiping = true;
+  		this.setAnimations('0ms');
+
+  		if((offsetLeft < 0 && -offsetLeft > this.rightWidth) ||
+  		  (offsetLeft > 0 && offsetLeft > this.leftWidth) ||
+  		  (offsetLeft > 0 && !this.leftWidth ) ||
+  		  (offsetLeft < 0 && !this.rightWidth)) { 
+  		}else {
+			this.move(offsetLeft);
+  		}
+  	},
+  	endDrag(evt) {
+  		this.setAnimations('');
+  		if(!this.swiping) return;
+  		
+  		this.swipeLeaveTransition(this.offsetLeft > 0 ? 1: -1);
+  	},
+  	swipeLeaveTransition(direction) {
+  		if(direction > 0 && this.offsetLeft > 0.4 * this.leftWidth) {
+  			this.move(this.leftWidth);
+  			this.resetSwipe();
+  			return;
+  		}
+
+  		if(direction < 0 && -this.offsetLeft > 0.4 * this.rightWidth) {
+  			this.move(-this.rightWidth);
+  			this.resetSwipe();
+  			return;
+  		}
+
+  		this.move(0);
+  		once(this.wrap, 'webkitTransitionEnd', () => {
+  			this.swiping = false;
+  			this.wrap.style.webkitTransform = '';
+  		})
+  	},
+  	resetSwipe() {
+  		this.swiping = false;
+  		this.offsetLeft = 0;
+  	},
+  	setAnimations(val) {
+  		this.wrap.style.transitionDuration = val;
+  		this.leftWrap.style.transitionDuration = val;
+  		this.rightWrap.style.transitionDuration = val;
+  	},
+  	move(offset = 0) {
+  		this.translate3d(this.rightWrap, this.rightWidth + offset);
+  		this.translate3d(this.wrap, offset);
+  		this.translate3d(this.leftWrap, -this.leftWidth + offset);
+  		offset && (this.swiping = true);
   	},
   	translate3d(el, offset) {
   		el.style.webkitTransform = `translate3d(${offset}px, 0, 0)`;
@@ -93,6 +139,11 @@ export default {
 			display: block;
 	    	line-height: 48px;
 	    	padding: 0 10px;
+		}
+		.m-cell-left,
+		.m-cell-wrap,
+		.m-cell-right {
+			transition: transform 150ms ease-in-out;
 		}
 	}
 }
