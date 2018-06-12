@@ -1,21 +1,55 @@
 <template>
-	<div class="m-cell-swipe">
-		<x-cell 
-			:title="title"
-			ref="cell"
-			@touchstart.native="startDrag"
-			@touchmove.native="onDrag"
-			@touchend.native="endDrag">
-			<div slot="left" ref="left"></div>
-			<div 
-				class="m-cell-swipe-buttongroup" 
-				slot="right"
-				ref="right">
-				<a class="m-cell-swipe-button" style="background:lightgray; color:#fff">Mark as Unread</a>
-				<a class="m-cell-swipe-button" style="background:red; color:#fff">Delete</a>
-			</div>
-		</x-cell>
-	</div>
+	<x-cell 
+		class="m-cell-swipe"
+		ref="cell"
+		@touchstart.native="startDrag"
+		@touchmove.native="onDrag"
+		@touchend.native="endDrag"
+		@click.native="move()"
+		:title="title"
+		:to="to"
+		:is-link="isLink"
+		:icon="icon"
+		:value="value"
+		:label="label">
+		<div 
+			class="m-cell-swipe-buttongroup" 
+			slot="right"
+			ref="right">
+			<a 
+			  class="m-cell-swipe-button" 
+			  v-for="btn in rightbtns"
+			  :style="btn.style"
+			  v-html="btn.content"
+			  @click.prevent.stop="btn.handler && btn.handler(), this.move()"
+			  >
+			</a>
+		</div>
+		<div 
+			class="m-cell-swipe-buttongroup" 
+			slot="left"
+			ref="left">
+			<a 
+			  class="m-cell-swipe-button" 
+			  v-for="btn in leftbtns"
+			  :style="btn.style"
+			  v-html="btn.content"
+			  @click.prevent.stop="btn.handler && btn.handler(), this.move()"
+			  >
+			</a>
+		</div>
+		<slot></slot>
+		<span 
+			v-if="$slots.title"
+			slot="title">
+			<slot name="title"></slot>
+		</span>
+		<span 
+			v-if="$slots.icon"
+			slot="icon">
+			<slot name="icon"></slot>
+		</span>
+	</x-cell>
 </template>
 <script>
 import XCell from '@/components/cell'
@@ -25,11 +59,18 @@ export default {
   name: 'mt-cell-swipe',
   components: {XCell},
   props: {
-  	title: String
+	icon: String,
+	title: String,
+	label: String,
+	isLink: Boolean,
+	value: String,
+	to: [String, Object],
+	rightbtns: Array,
+	leftbtns: Array
   },
   data() {
   	return {
-  		start: {x: 0, y: 0}
+  	    start: {x: 0, y: 0}
   	}
   },
   mounted() {
@@ -43,8 +84,6 @@ export default {
   	this.rightWrap = this.right.parentNode;
   	this.leftWrap = this.left.parentNode;
 
-  	this.translate3d(this.leftWrap, -this.leftWidth-1);
-  	this.translate3d(this.rightWrap, this.rightWidth);
 
   },
   methods: {
@@ -56,7 +95,14 @@ export default {
   		this.dragging = true;
   	},
   	onDrag(evt) {
-  		//todo open
+  		if(this.opened) {
+  			if(!this.swiping) {
+  				this.move(0);
+  				this.setAnimations('');
+  			}
+  			this.opened = false;
+  			return;
+  		}
   		if(!this.dragging) return;
   		const e = evt.changedTouches ? evt.changedTouches[0] : evt;
   		const offsetLeft = this.offsetLeft = e.pageX - this.start.x;
@@ -87,27 +133,30 @@ export default {
   		this.swipeLeaveTransition(this.offsetLeft > 0 ? 1: -1);
   	},
   	swipeLeaveTransition(direction) {
-  		if(direction > 0 && this.offsetLeft > 0.4 * this.leftWidth) {
+  		setTimeout(() => {
+  		  if(direction > 0 && this.offsetLeft > 0.4 * this.leftWidth) {
   			this.move(this.leftWidth);
   			this.resetSwipe();
   			return;
-  		}
+  			}
 
-  		if(direction < 0 && -this.offsetLeft > 0.4 * this.rightWidth) {
-  			this.move(-this.rightWidth);
-  			this.resetSwipe();
-  			return;
-  		}
+	  		if(direction < 0 && -this.offsetLeft > 0.4 * this.rightWidth) {
+	  			this.move(-this.rightWidth);
+	  			this.resetSwipe();
+	  			return;
+	  		}
 
-  		this.move(0);
-  		once(this.wrap, 'webkitTransitionEnd', () => {
-  			this.swiping = false;
-  			this.wrap.style.webkitTransform = '';
-  		})
+	  		this.move(0);
+	  		once(this.wrap, 'webkitTransitionEnd', () => {
+	  			this.swiping = false;
+	  			this.wrap.style.webkitTransform = '';
+	  		})
+  		}, 0);
   	},
   	resetSwipe() {
   		this.swiping = false;
   		this.offsetLeft = 0;
+  		this.opened = true;
   	},
   	setAnimations(val) {
   		this.wrap.style.transitionDuration = val;
