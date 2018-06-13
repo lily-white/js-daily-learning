@@ -2,6 +2,7 @@
 	<x-cell 
 		class="m-cell-swipe"
 		ref="cell"
+		v-clickoutside:touchstart="move"
 		@touchstart.native="startDrag"
 		@touchmove.native="onDrag"
 		@touchend.native="endDrag"
@@ -54,6 +55,7 @@
 <script>
 import XCell from '@/components/cell'
 import {once} from '@/utils/dom.js'
+import Clickoutside from '@/utils/Clickoutside.js'
 
 export default {
   name: 'mt-cell-swipe',
@@ -72,6 +74,9 @@ export default {
   	return {
   	    start: {x: 0, y: 0}
   	}
+  },
+  directives: {
+  	Clickoutside
   },
   mounted() {
   	this.wrap = this.$refs.cell.$el.querySelector('.m-cell-wrapper');
